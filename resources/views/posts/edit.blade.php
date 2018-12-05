@@ -9,15 +9,16 @@
             <!-- Alerts Messages -->
             @include('inc.messages')
 
-            {!! Form::open(['action' => 'PostsController@store', 'method' => 'posts']) !!}
+            {!! Form::open(['action' => ['PostsController@update', $post->id], 'method' => 'posts']) !!}
                 <div class="form-group">
                     {{ Form::label('title', 'Title') }}
-                    {{ Form::text('title', '', ['class' => 'form-control']) }}
+                    {{ Form::text('title', $post->title, ['class' => 'form-control']) }}
                 </div>
                 <div class="form-group">
                     {{ Form::label('body', 'Body') }}
-                    {{ Form::textarea('body', '', ['class' => 'form-control']) }}
+                    {{ Form::textarea('body', $post->body, ['class' => 'form-control']) }}
                 </div>
+                {{ Form::hidden('_method', 'PUT') }}
                 {{ Form::submit('Submit', ['class' => 'btn btn-primary']) }}
             {!! Form::close()!!}
         </div>

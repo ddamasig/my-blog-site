@@ -13,3 +13,7 @@
 
 Route::get('/', 'PagesController@index');
 Route::resource('posts', 'PostsController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
