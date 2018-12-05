@@ -8,6 +8,11 @@
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <p>{!! $post->body !!}</p>
+
+                <small class="post-meta mb-5 d-block">Posted by
+                    <a href="#">{{ $post->user->name }}</a>
+                    on {!! $post->created_at->format('F d, Y') !!}
+                </small>
             </div>
         </div>
     </div>
