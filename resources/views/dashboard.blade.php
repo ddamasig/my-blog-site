@@ -16,9 +16,9 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th><span class="btn">Title</span></th>
-                        <th></th>
-                        <th>
+                        <th style="width:80%;"><span class="btn">Title</span></th>
+                        <th style="width:10%;"></th>
+                        <th style="width:10%;">
                             <a href="/posts/create" class="btn btn-default float-right">
                                 <li class="fa fa-plus mr-2"></li>
                                 Write New Post
@@ -30,21 +30,22 @@
                     @if (count($posts) > 0)
                     @foreach ($posts as $post)
                     <tr>
-                        <td class="align-middle">{{ $post->title }}</td>
-                        <td colspan="2">
-                            <div class="float-right">
-                                {!! Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST']) !!}
-                                    <a href="/posts/{{ $post->id }}/edit" class="btn btn-primary">
-                                        <li class="fa fa-edit mr-2"></li>
-                                        Edit
-                                    </a>
-                                {{ Form::hidden('_method', 'DELETE') }}
-                                    {{-- {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }} --}}
-                                    <button class="btn btn-danger">
-                                        <li class="fa fa-trash mr-2"></li> Delete
-                                    </button>
-                                {!! Form::close() !!}
-                            </div>
+                        <td style="width:80%;" class="align-middle">
+                            {{ $post->title }}
+                        </td>
+                        <td style="width:10%;">
+                            <a href="/posts/{{ $post->id }}/edit" class="btn btn-primary float-right">
+                                <li class="fa fa-edit mr-2"></li>
+                                Edit
+                            </a>
+                        </td>
+                        <td style="width:10%;">
+                        {!! Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST']) !!}
+                            {{ Form::hidden('_method', 'DELETE') }}
+                            <button class="btn btn-danger float-right">
+                                <li class="fa fa-trash mr-2"></li> Delete
+                            </button>
+                        {!! Form::close() !!}
                         </td>
                     </tr>
                     @endforeach

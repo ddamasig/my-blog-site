@@ -30,9 +30,6 @@
                     @endif
                 </li>
                 @else
-                <li class="nav-item">
-                    <a class="nav-link text-secondary" href="/posts/create">Write New Post</a>
-                </li>
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link text-secondary dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false" v-pre>
@@ -40,14 +37,16 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                        </form>
+                        <a class="dropdown-item" href="/dashboard">
+                            Dashboard
+                        </a>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
                     </div>
                 </li>
                 @endguest

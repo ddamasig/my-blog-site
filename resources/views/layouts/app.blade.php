@@ -29,7 +29,11 @@
     <!-- Navigation Bar -->
     @include('inc.navbar')
     <!-- Page Header -->
-    @include('inc.page-header')
+    @if (isset($post))
+        @include('inc.page-header', ['postCoverImage' => $post->cover_image])
+    @else
+        @include('inc.page-header')        
+    @endif
     
     <!-- Main Content -->
     @yield('content')
